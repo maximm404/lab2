@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+#include <cstdio>
+
+
+double twofact(double n) {
+	if (n == 0)
+	{
+		return 1;
+	}
+	if (n == 1)
+	{
+		return 1;
+	}
+	return n * twofact(n - 2);
+}
+
+long double t(long double x) {
+	long double a = 0;
+	long double b = 0;
+	for (int k = 0; k < 10; k ++) {
+		a = a + (pow(x, 2 * k + 1)) / (twofact(double(2 * k + 1)));
+		b = b + (pow(x, 2 * k)) / (twofact(double(2 * k)));
+	}
+	return a / b;
+}
+
+
+int main() {
+	double y;
+	double otvet;
+	std::cin >> y;
+	otvet = (7 * t(0.25) + 2 * t(1 + y)) / (6 - t((pow(y, 2)) - 1));
+	std::cout << otvet;
+}
+
